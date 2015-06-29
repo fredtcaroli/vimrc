@@ -11,7 +11,7 @@ set expandtab
 "Keep cursor line at least 10 lines away from top or bottom
 set scrolloff=10
 
-"Highlight the column 85 for space awareness
+"Highlight the column 80 for space awareness
 set colorcolumn=80
 highlight ColorColumn ctermbg=darkgray
 
