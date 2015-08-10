@@ -71,12 +71,6 @@ nnoremap 0 ^
 "In C and C++, I want the the { to be autoclosed in a newline
 autocmd FileType c,cpp inoremap { {<CR>}<ESC>O
 
-
-"I often use O right after pressing ESC.
-"Vim delays after the O is pressed, waiting an ESC combination, e.g. <ESC>O<key>
-"set noesckeys "With this, the ESC combination keys (e.g. arrows) are disabled
-set timeoutlen=100 "With this, the delay is unperceivable
-
 "In Makefiles, real tabs should be used
 autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
