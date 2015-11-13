@@ -1,18 +1,5 @@
 "Makes vim vim
 set nocompatible
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  " Also don't do it when the mark is in the first line, that is the default
-  " position when opening a file.
-  autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-
-endif " has("autocmd")
 
 "Comma feels like a better suited <leader>
 let mapleader=","
@@ -84,11 +71,7 @@ inoremap <LEFT> <nop>
 "I prefer the 0 key for the first non-blank character. ^ feels odd
 nnoremap 0 ^
 
-"In C and C++, I want the the { to be autoclosed in a newline
-autocmd FileType c,cpp inoremap { {<CR>}<ESC>O
 
-"In Makefiles, real tabs should be used
-autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
 "Set to auto read when a file is changed from the outside
 set autoread
@@ -102,3 +85,23 @@ set exrc
 "Since exrc can be a security breach, this will prevent :autocmd, shell and
 "write commands inside project-specific .vimrc files to be executed
 set secure
+
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  " Also don't do it when the mark is in the first line, that is the default
+  " position when opening a file.
+  autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+  
+  "In C and C++, I want the the { to be autoclosed in a newline
+  autocmd FileType c,cpp inoremap { {<CR>}<ESC>O
+  
+  "In Makefiles, real tabs should be used
+  autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
+
+endif " has("autocmd")
