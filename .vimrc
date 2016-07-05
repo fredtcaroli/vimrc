@@ -41,8 +41,20 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
-"Show line numbers
-set number
+"Show relative line numbers
+set relativenumber
+
+"Function to toggle to absolute line numbers
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+"Map Ctrl+n to call the previous toggle function
+nnoremap <C-n> :call NumberToggle()<cr>
 
 "Highlight current cursor line
 set cursorline
