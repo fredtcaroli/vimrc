@@ -1,7 +1,49 @@
 "Makes vim vim
 set nocompatible
 
-"Comma feels like a better suited <leader>
+"Required for Vundle
+filetype off
+
+"Include Vundle in the runtime path
+set rtp+=~/.vim/bundle/Vundle.vim
+
+"Start Vundle plugins
+call vundle#begin()
+
+"Let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'scrooloose/syntastic'
+Plugin 'altercation/vim-colors-solarized' "Nice colors
+Plugin 'bling/vim-airline' "Cool status line
+
+"End Vundle plugins
+call vundle#end()
+
+"Required for Vundle again
+filetype plugin indent on
+
+"Autoclose preview window of YCM
+let g:ycm_autoclose_preview_window_after_completion = 1
+
+"Open NERDTree automatically
+autocmd vimenter * NERDTree
+
+"Close vim if only window left is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"Set color scheme from solarized
+syntax enable
+let g:solarized_termcolors=256
+set background=dark
+colorscheme solarized
+
+"Enable mouse
+set mouse=a
+
+"comma feels like a better suited <leader>
 let mapleader=","
 
 "Indentation stuff
@@ -30,15 +72,7 @@ set splitright
 
 "Show relative line numbers
 set relativenumber
-
-"Function to toggle to absolute line numbers
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
+set number
 
 "Map Ctrl+n to call the previous toggle function
 nnoremap <C-n> :call NumberToggle()<cr>
