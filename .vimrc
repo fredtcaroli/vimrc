@@ -18,6 +18,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/syntastic'
 Plugin 'altercation/vim-colors-solarized' "Nice colors
 Plugin 'bling/vim-airline' "Cool status line
+Plugin 'tomtom/tcomment_vim' "Toggle line comments
 
 "End Vundle plugins
 call vundle#end()
@@ -39,6 +40,10 @@ syntax enable
 let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
+
+"Toggle line comments map
+nnoremap <LEADER>/ :TComment<CR>
+vnoremap <LEADER>/ :TComment<CR>
 
 "Enable mouse
 set mouse=a
